@@ -1,0 +1,88 @@
+./
+├── app
+│   ├── build
+│   │   ├── classes
+│   │   │   └── java
+│   │   │       └── main
+│   │   │           └── org
+│   │   │               └── calendrier
+│   │   │                   ├── App.class
+│   │   │                   ├── dao
+│   │   │                   │   └── ActiviteDao.class
+│   │   │                   ├── database
+│   │   │                   │   └── DatabaseManager.class
+│   │   │                   ├── model
+│   │   │                   │   ├── Activite.class
+│   │   │                   │   └── Calendrier.class
+│   │   │                   └── view
+│   │   │                       ├── EditActiviteView$SaveCallback.class
+│   │   │                       ├── EditActiviteView.class
+│   │   │                       └── MainView.class
+│   │   ├── distributions
+│   │   │   ├── app.tar
+│   │   │   └── app.zip
+│   │   ├── generated
+│   │   │   └── sources
+│   │   │       ├── annotationProcessor
+│   │   │       │   └── java
+│   │   │       │       └── main
+│   │   │       └── headers
+│   │   │           └── java
+│   │   │               └── main
+│   │   ├── libs
+│   │   │   └── app.jar
+│   │   ├── resources
+│   │   │   └── main
+│   │   │       ├── META-INF
+│   │   │       │   └── persistence.xml
+│   │   │       └── db
+│   │   │           └── migration
+│   │   │               └── V1__Create_activite_table.sql
+│   │   ├── scripts
+│   │   │   ├── app
+│   │   │   └── app.bat
+│   │   └── tmp
+│   │       ├── compileJava
+│   │       │   └── previous-compilation-data.bin
+│   │       └── jar
+│   │           └── MANIFEST.MF
+│   ├── build.gradle
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── org
+│       │   │       └── calendrier
+│       │   │           ├── App.java
+│       │   │           ├── dao
+│       │   │           │   └── ActiviteDao.java
+│       │   │           ├── database
+│       │   │           │   └── DatabaseManager.java
+│       │   │           ├── model
+│       │   │           │   ├── Activite.java
+│       │   │           │   └── Calendrier.java
+│       │   │           ├── util
+│       │   │           └── view
+│       │   │               ├── EditActiviteView.java
+│       │   │               └── MainView.java
+│       │   └── resources
+│       │       ├── META-INF
+│       │       │   └── persistence.xml
+│       │       └── db
+│       │           └── migration
+│       │               └── V1__Create_activite_table.sql
+│       └── test
+│           ├── java
+│           │   └── org
+│           │       └── calendrier
+│           └── resources
+├── gradle
+│   ├── libs.versions.toml
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradlew
+├── gradlew.bat
+├── settings.gradle
+└── structure.txt
+
+52 directories, 34 files

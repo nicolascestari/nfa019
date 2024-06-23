@@ -1,0 +1,68 @@
+plugins {
+    id 'application'
+    id 'java'
+    id 'org.flywaydb.flyway' version '9.8.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def os = org.gradle.internal.os.OperatingSystem.current()
+def arch = System.getProperty("os.arch")
+def javafxPlatform = ""
+
+if (os.isMacOsX()) {
+    if (arch == "aarch64") {
+        javafxPlatform = "mac-aarch64"
+    } else {
+        javafxPlatform = "mac"
+    }
+} else if (os.isLinux()) {
+    javafxPlatform = "linux"
+} else if (os.isWindows()) {
+    javafxPlatform = "win"
+}
+
+dependencies {
+    // JavaFX dependencies
+    implementation "org.openjfx:javafx-base:21:${javafxPlatform}"
+    implementation "org.openjfx:javafx-controls:21:${javafxPlatform}"
+    implementation "org.openjfx:javafx-graphics:21:${javafxPlatform}"
+    implementation "org.openjfx:javafx-fxml:21:${javafxPlatform}"
+
+    // MySQL Connector/J dependency
+    implementation 'mysql:mysql-connector-java:8.0.32'
+
+    // JPA and Hibernate dependencies
+    implementation 'org.hibernate:hibernate-core:5.4.32.Final'
+    implementation 'org.hibernate:hibernate-entitymanager:5.4.32.Final'
+    implementation 'javax.persistence:javax.persistence-api:2.2'
+
+    // Flyway dependency
+    implementation 'org.flywaydb:flyway-core:10.15.0'
+    implementation 'org.flywaydb:flyway-mysql:10.15.0'
+}
+
+application {
+    mainClass = 'org.calendrier.App'
+}
+
+tasks.withType(JavaExec) {
+    jvmArgs += [
+        "--module-path", configurations.runtimeClasspath.asPath,
+        "--add-modules", "javafx.controls,javafx.fxml"
+    ]
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += [
+        "--module-path", configurations.compileClasspath.asPath,
+        "--add-modules", "javafx.controls,javafx.fxml"
+    ]
+}
+
+test {
+    useJUnitPlatform()
+}
+

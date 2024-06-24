@@ -2,6 +2,7 @@ plugins {
     id 'application'
     id 'java'
     id 'org.flywaydb.flyway' version '9.8.1'
+    id 'com.github.johnrengelman.shadow' version '8.1.1' 
 }
 
 repositories {
@@ -42,6 +43,10 @@ dependencies {
     // Flyway dependency
     implementation 'org.flywaydb:flyway-core:10.15.0'
     implementation 'org.flywaydb:flyway-mysql:10.15.0'
+
+    // JUnit 5 dependencies
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
 application {
@@ -62,7 +67,14 @@ tasks.withType(JavaCompile) {
     ]
 }
 
+// Configurer la tâche shadowJar
+shadowJar {
+    archiveBaseName.set('app-all')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+    mergeServiceFiles()
+}
+
 test {
     useJUnitPlatform()
 }
-
